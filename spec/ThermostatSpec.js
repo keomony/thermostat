@@ -36,7 +36,13 @@ describe('Thermostat',function(){
   it("should be able to change power saving mode", function(){
     thermostat.changePowerSaving();
     expect(thermostat.isPowerSaving).toBeFalsy();
-  })
+  });
+
+  it("should be able to turn on the power saving mode ", function(){
+      thermostat.changePowerSaving();
+      thermostat.changePowerSaving();
+    expect(thermostat.isPowerSaving).toBeTruthy();
+  });
   it("should have a max temperature of 32 if not power saving", function(){
     thermostat.changePowerSaving();
     for(var i=0; i< 60; i++){
