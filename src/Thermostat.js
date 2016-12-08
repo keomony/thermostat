@@ -5,6 +5,8 @@ var Thermostat = function (){
   this.POWER_SAVING_MAX_TEMP = 25;
   this.ABSOLUTE_MAX_TEMP = 32;
   this.DEFAULT_TEMP = 20
+  this.LOW_USAGE_LIMIT = 18;
+  this.MEDIUM_USAGE_LIMIT = 25;
   this.isPowerSaving = true;
   this.temperature = this.DEFAULT_TEMP;
 }
@@ -38,9 +40,11 @@ Thermostat.prototype.reset = function(){
 }
 
 Thermostat.prototype.energyUsage = function(){
-  if(this.temperature < 18){
+  if(this.temperature < this.LOW_USAGE_LIMIT){
     return 'low-usage';
-  } else {
+  } else if (this.temperature < this.MEDIUM_USAGE_LIMIT ){
     return 'medium-usage';
-  }
+  } else{
+   return  'high-usage';
+ }
 }
