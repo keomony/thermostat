@@ -10,7 +10,7 @@ Thermostat.prototype.up = function(){
 }
 
 Thermostat.prototype.down = function(){
-  if (this.temperature > 10) {
+  if (this.temperature > this.MINIMUM_TEMPERATURE ) {
     this.temperature -=1;
   }
 }
