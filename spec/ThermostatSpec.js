@@ -59,4 +59,9 @@ describe('Thermostat',function(){
     expect(thermostat.temperature).toEqual(20);
   });
 
+  describe("Presentation", function(){
+    it("should display medium-usage for temps under 25", function(){
+      expect(thermostat.energyUsage()).toEqual('medium-usage');
+    })
+  });
 });

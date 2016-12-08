@@ -36,3 +36,7 @@ Thermostat.prototype.changePowerSaving = function(){
 Thermostat.prototype.reset = function(){
   this.temperature = this.DEFAULT_TEMP;
 }
+
+Thermostat.prototype.energyUsage = function(){
+  return 'medium-usage';
+}
