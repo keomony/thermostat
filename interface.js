@@ -3,9 +3,6 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
   updateEnergyUsage();
-  function updateEnergyUsage(){
-    $('#energy_display').text(thermostat.energyUsage());
-  }
   jQuery('#up').click(function(){
     thermostat.up();
   });
@@ -28,6 +25,10 @@ $(document).ready(function(){
   }
   function updatePowerSaving() {
     $('#psm_display').text(onOrOff());
+  }
+  function updateEnergyUsage(){
+    $('#energy_display').text(thermostat.energyUsage());
+    $('#energy_display').attr('class',thermostat.energyUsage());
   }
   function onOrOff() {
     return thermostat.isPowerSaving ? 'ON' : 'OFF';
