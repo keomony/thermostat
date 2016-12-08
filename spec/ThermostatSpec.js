@@ -19,4 +19,11 @@ describe('Thermostat',function(){
     expect(thermostat.temperature).toEqual(19);
   });
 
+  it('should be unable to go below 10 degrees', function(){
+    for (var i = 0; i < 14; i++ ){
+      thermostat.down();
+    }
+    expect(thermostat.temperature).toEqual(10);
+  });
+
 });
