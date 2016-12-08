@@ -27,10 +27,22 @@ describe('Thermostat',function(){
   });
 
   it('should be unable to go above 25 degrees',function(){
-    for(var i=0; i< 6; i++){
+    for(var i=0; i< 56; i++){
       thermostat.up();
     }
     expect(thermostat.temperature).toEqual(25);
+  });
+
+  it("should be able to change power saving mode", function(){
+    thermostat.changePowerSaving();
+    expect(thermostat.isPowerSaving).toBeFalsy();
+  })
+  it("should have a max temperature of 32 if not power saving", function(){
+    thermostat.changePowerSaving();
+    for(var i=0; i< 60; i++){
+      thermostat.up();
+    }
+    expect(thermostat.temperature).toEqual(32);
   });
 
 });
