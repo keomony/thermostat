@@ -3,6 +3,7 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
   updateEnergyUsage();
+  updateCityTemp();
   jQuery('#up').click(function(){
     thermostat.up();
   });
@@ -20,6 +21,9 @@ $(document).ready(function(){
     thermostat.changePowerSaving();
     updatePowerSaving();
   });
+  $('#currentCity').change(function(){
+    updateCityTemp();
+  });
   function updateTemperature() {
     $('#temp_display').text(thermostat.temperature);
   }
@@ -33,12 +37,12 @@ $(document).ready(function(){
   function onOrOff() {
     return thermostat.isPowerSaving ? 'ON' : 'OFF';
   }
-
-  $('#currentCity').change(function(){
-    var city = $('#currentCity').val();
-    $.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed',function(data){
-      $('#temp_display').text(Math.round(data.main.temp - 273.15));
+  function updateCityTemp() {
+    var city = $('#currentCity');
+    $('#cityDisplay').text($("#currentCity option:selected").text());
+    $.get('http://api.openweathermap.org/data/2.5/weather?q='+city.val()+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed',function(data){
+      $('#cityTemp').text(Math.round(data.main.temp - 273.15));
     })
-  });
+  };
 
 });
