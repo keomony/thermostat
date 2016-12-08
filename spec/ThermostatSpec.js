@@ -62,6 +62,12 @@ describe('Thermostat',function(){
   describe("Presentation", function(){
     it("should display medium-usage for temps under 25", function(){
       expect(thermostat.energyUsage()).toEqual('medium-usage');
-    })
+    });
+    it("should display low-usage for temps under 18",function(){
+      for(var i=0; i<3; i++){
+        thermostat.down();
+      }
+      expect(thermostat.energyUsage()).toEqual('low-usage');
+    });
   });
 });
