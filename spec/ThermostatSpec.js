@@ -26,4 +26,11 @@ describe('Thermostat',function(){
     expect(thermostat.temperature).toEqual(10);
   });
 
+  it('should be unable to go above 25 degrees',function(){
+    for(var i=0; i< 6; i++){
+      thermostat.up();
+    }
+    expect(thermostat.temperature).toEqual(25);
+  });
+
 });
