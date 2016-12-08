@@ -12,7 +12,7 @@ $(document).ready(function(){
   $('#reset').click(function(){
     thermostat.reset();
   });
-  $(document).click(function(){
+  $('.thermo').click(function(){
     updateTemperature();
     updateEnergyUsage();
   });
@@ -34,5 +34,11 @@ $(document).ready(function(){
     return thermostat.isPowerSaving ? 'ON' : 'OFF';
   }
 
+  $('#currentCity').change(function(){
+    var city = $('#currentCity').val();
+    $.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed',function(data){
+      $('#temp_display').text(Math.round(data.main.temp - 273.15));
+    })
+  });
 
 });
